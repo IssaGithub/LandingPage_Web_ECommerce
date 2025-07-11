@@ -14,6 +14,10 @@ const t = translations[currentLocale];
 const otherLocale = currentLocale === 'en' ? 'de' : 'en';
 const otherLocalePath = currentLocale === 'en' ? '/de' : '/';
 
+// Create proper image path - handle both local and GitHub Pages
+const baseUrl = import.meta.env.BASE_URL || '/';
+const imagePath = baseUrl.endsWith('/') ? baseUrl + '4L9A9035.jpg' : baseUrl + '/4L9A9035.jpg';
+
 const topics = [
   t.topics.website,
   t.topics.onlineShop,
@@ -63,8 +67,55 @@ const topics = [
       </div>
     </main>
 
-    <!-- Services Section -->
+    <!-- About Section -->
     <section class="bg-gray-800 py-16">
+      <div class="max-w-6xl mx-auto px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Photo -->
+          <div class="text-center md:text-left">
+            <div class="inline-block relative">
+              <img 
+                src={imagePath}
+                alt="Issa Zaytoun - E-Commerce & Software Development Expert"
+                class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-2xl border-4 border-cyan-400/20"
+                loading="lazy"
+              />
+              <div class="absolute -bottom-4 -right-4 bg-cyan-400 rounded-full p-3">
+                <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Bio Content -->
+          <div>
+            <h2 class="text-3xl font-bold mb-6 text-cyan-400">{t.aboutTitle}</h2>
+            <p class="text-lg text-gray-300 mb-8 leading-relaxed">{t.aboutText}</p>
+            
+            <!-- Highlights -->
+            <div class="space-y-3">
+              {t.aboutHighlights.map(highlight => (
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
+                  <span class="text-gray-300">{highlight}</span>
+                </div>
+              ))}
+            </div>
+            
+            <!-- CTA -->
+            <div class="mt-8">
+              <button onclick="window.open('https://calendly.com/issa-zaytoun/erstgesprach-mit-issa-zaytoun-web-e-commerce', '_blank')" class="bg-cyan-400 hover:bg-cyan-500 text-black font-bold py-3 px-6 rounded transition-colors">
+                {t.calendlyButton}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="bg-gray-900 py-16">
       <div class="max-w-6xl mx-auto px-8">
         <h2 class="text-3xl font-bold text-center mb-12">{t.servicesTitle}</h2>
         
@@ -77,7 +128,7 @@ const topics = [
             </a>
           </div>
           <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-gray-900/50 p-6 rounded-lg">
+            <div class="bg-gray-800/50 p-6 rounded-lg">
               <h4 class="text-xl font-semibold mb-4 text-white">{t.services.ecommerce.consulting.title}</h4>
               <ul class="space-y-2">
                 {t.services.ecommerce.consulting.items.map(item => (
@@ -88,7 +139,7 @@ const topics = [
                 ))}
               </ul>
             </div>
-            <div class="bg-gray-900/50 p-6 rounded-lg">
+            <div class="bg-gray-800/50 p-6 rounded-lg">
               <h4 class="text-xl font-semibold mb-4 text-white">{t.services.ecommerce.development.title}</h4>
               <ul class="space-y-2">
                 {t.services.ecommerce.development.items.map(item => (
@@ -99,7 +150,7 @@ const topics = [
                 ))}
               </ul>
             </div>
-            <div class="bg-gray-900/50 p-6 rounded-lg">
+            <div class="bg-gray-800/50 p-6 rounded-lg">
               <h4 class="text-xl font-semibold mb-4 text-white">{t.services.ecommerce.operation.title}</h4>
               <ul class="space-y-2">
                 {t.services.ecommerce.operation.items.map(item => (
@@ -110,7 +161,7 @@ const topics = [
                 ))}
               </ul>
             </div>
-            <div class="bg-gray-900/50 p-6 rounded-lg">
+            <div class="bg-gray-800/50 p-6 rounded-lg">
               <h4 class="text-xl font-semibold mb-4 text-white">{t.services.ecommerce.marketing.title}</h4>
               <ul class="space-y-2">
                 {t.services.ecommerce.marketing.items.map(item => (
@@ -133,7 +184,7 @@ const topics = [
             </a>
           </div>
           <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-gray-900/50 p-6 rounded-lg">
+            <div class="bg-gray-800/50 p-6 rounded-lg">
               <h4 class="text-xl font-semibold mb-4 text-white">{t.services.software.individual.title}</h4>
               <ul class="space-y-2">
                 {t.services.software.individual.items.map(item => (
@@ -144,7 +195,7 @@ const topics = [
                 ))}
               </ul>
             </div>
-            <div class="bg-gray-900/50 p-6 rounded-lg">
+            <div class="bg-gray-800/50 p-6 rounded-lg">
               <h4 class="text-xl font-semibold mb-4 text-white">{t.services.software.technologies.title}</h4>
               <ul class="space-y-2">
                 {t.services.software.technologies.items.map(item => (
@@ -155,7 +206,7 @@ const topics = [
                 ))}
               </ul>
             </div>
-            <div class="bg-gray-900/50 p-6 rounded-lg">
+            <div class="bg-gray-800/50 p-6 rounded-lg">
               <h4 class="text-xl font-semibold mb-4 text-white">{t.services.software.integrations.title}</h4>
               <ul class="space-y-2">
                 {t.services.software.integrations.items.map(item => (
@@ -166,7 +217,7 @@ const topics = [
                 ))}
               </ul>
             </div>
-            <div class="bg-gray-900/50 p-6 rounded-lg">
+            <div class="bg-gray-800/50 p-6 rounded-lg">
               <h4 class="text-xl font-semibold mb-4 text-white">{t.services.software.quality.title}</h4>
               <ul class="space-y-2">
                 {t.services.software.quality.items.map(item => (

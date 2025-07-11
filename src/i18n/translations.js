@@ -25,6 +25,16 @@ export const translations = {
     ctaButton: "Learn More",
     contactCta: "Ready to start your project?",
     contactCtaButton: "Get Free Consultation",
+    // Introduction section
+    aboutTitle: "About Issa Zaytoun",
+    aboutText: "Passionate about digital transformation and modern e-commerce development, I specialize in creating scalable solutions using cutting-edge technologies like Medusa.js, Vendure, and React. I'm committed to helping businesses succeed in the digital world through innovative platforms and strategic consulting, bringing fresh perspectives and modern approaches to every project.",
+    aboutHighlights: [
+      "Specialized in modern Headless Commerce architectures",
+      "Expert in React, Next.js, and current frontend technologies", 
+      "Focused on Medusa.js and Vendure platforms",
+      "Committed to performance, scalability, and exceptional user experience",
+      "Dedicated to bringing businesses into the digital future"
+    ],
     services: {
       ecommerce: {
         consulting: {
@@ -198,6 +208,16 @@ export const translations = {
     ctaButton: "Mehr erfahren",
     contactCta: "Bereit für dein Projekt?",
     contactCtaButton: "Kostenloses Beratungsgespräch",
+    // Introduction section
+    aboutTitle: "Über Issa Zaytoun",
+    aboutText: "Mit Leidenschaft für digitale Transformation und moderne E-Commerce-Entwicklung spezialisiere ich mich auf die Erstellung skalierbarer Lösungen mit modernsten Technologien wie Medusa.js, Vendure und React. Ich setze mich dafür ein, Unternehmen durch innovative Plattformen und strategische Beratung in der digitalen Welt zum Erfolg zu verhelfen und bringe dabei frische Perspektiven und moderne Ansätze in jedes Projekt ein.",
+    aboutHighlights: [
+      "Spezialisiert auf moderne Headless-Commerce-Architekturen",
+      "Experte für React, Next.js und aktuelle Frontend-Technologien",
+      "Fokussiert auf Medusa.js und Vendure Plattformen",
+      "Engagement für Performance, Skalierbarkeit und außergewöhnliche User Experience",
+      "Entschlossen, Unternehmen in die digitale Zukunft zu führen"
+    ],
     services: {
       ecommerce: {
         consulting: {
