@@ -15,7 +15,7 @@ const otherLocale = currentLocale === 'en' ? 'de' : 'en';
 
 // Create proper base path for links
 const baseUrl = import.meta.env.BASE_URL || '/';
-const otherLocalePath = currentLocale === 'en' ? baseUrl + 'de' : baseUrl.replace(/\/$/, '');
+const otherLocalePath = currentLocale === 'en' ? (baseUrl.endsWith('/') ? baseUrl + 'de' : baseUrl + '/de') : baseUrl.replace(/\/$/, '');
 
 // Create proper image path - handle both local and GitHub Pages
 const imagePath = baseUrl.endsWith('/') ? baseUrl + '4L9A9035.jpg' : baseUrl + '/4L9A9035.jpg';
