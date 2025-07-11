@@ -30,30 +30,31 @@ A simple, DSGVO-compliant landing page built with Astro.js and Tailwind CSS.
 This project includes a GitHub Actions workflow that automatically deploys to GitHub Pages when you push to the `main` branch.
 
 ### Setup Instructions:
-1. **Update the site URL** in `astro.config.mjs`:
-   ```js
-   site: 'https://YOUR_USERNAME.github.io',
-   base: '/LandingPage_Web_ECommerce',
-   ```
-   Replace `YOUR_USERNAME` with your GitHub username.
-
-2. **Enable GitHub Pages** in your repository:
+1. **Enable GitHub Pages** in your repository:
    - Go to Repository Settings → Pages
    - Set Source to "GitHub Actions"
    - The workflow will automatically deploy on push to `main`
 
-3. **First deployment**:
+2. **First deployment**:
    ```sh
    git add .
-   git commit -m "Add GitHub Pages deployment"
+   git commit -m "Deploy to GitHub Pages"
    git push origin main
    ```
 
-4. **Access your site** at:
-   `https://YOUR_USERNAME.github.io/LandingPage_Web_ECommerce`
+3. **Access your site** at:
+   - **English**: `https://issagithub.github.io/LandingPage_Web_ECommerce/`
+   - **German**: `https://issagithub.github.io/LandingPage_Web_ECommerce/de`
 
 ### Manual Deployment
 You can also trigger deployment manually from the GitHub Actions tab.
+
+### Troubleshooting
+If you get 404 errors:
+1. Check that GitHub Pages is enabled in repository settings
+2. Ensure the source is set to "GitHub Actions"
+3. Wait a few minutes for deployment to complete
+4. Check the Actions tab for any deployment errors
 
 ---
 
