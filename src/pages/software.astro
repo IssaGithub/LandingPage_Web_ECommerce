@@ -1,0 +1,156 @@
+---
+import { translations } from '../i18n/translations.js';
+
+const currentLocale = 'en';
+const t = translations[currentLocale];
+const subpage = t.subpages.software;
+---
+<html lang={currentLocale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{subpage.title} | {t.company}</title>
+    <meta name="description" content={subpage.description} />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 py-4">
+      <div class="max-w-6xl mx-auto px-8 flex justify-between items-center">
+        <a href="/" class="text-xl font-bold">{t.company}</a>
+        <div class="flex gap-4">
+          <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="/de" class="text-gray-300 hover:text-white transition-colors">Deutsch</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 py-20">
+      <div class="max-w-4xl mx-auto px-8 text-center">
+        <h1 class="text-5xl font-bold mb-6">{subpage.title}</h1>
+        <p class="text-xl text-gray-300 mb-8">{subpage.subtitle}</p>
+        <p class="text-lg text-gray-400 mb-10">{subpage.description}</p>
+        <button onclick="window.open('https://calendly.com/issa-zaytoun/erstgesprach-mit-issa-zaytoun-web-e-commerce', '_blank')" class="bg-cyan-400 hover:bg-cyan-500 text-black font-bold py-4 px-8 rounded-lg text-lg transition-colors">
+          {t.calendlyButton}
+        </button>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16">
+      <div class="max-w-6xl mx-auto px-8">
+        <h2 class="text-3xl font-bold text-center mb-12">Why Choose Our Software Development?</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {subpage.benefits.map(benefit => (
+            <div class="bg-gray-800 p-6 rounded-lg">
+              <div class="text-cyan-400 text-2xl mb-4">✓</div>
+              <p class="text-gray-300">{benefit}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="bg-gray-800 py-16">
+      <div class="max-w-6xl mx-auto px-8">
+        <h2 class="text-3xl font-bold text-center mb-12">{subpage.process.title}</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {subpage.process.steps.map(step => (
+            <div class="text-center">
+              <div class="bg-cyan-400 text-black w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                {step.title.charAt(0)}
+              </div>
+              <h3 class="text-xl font-semibold mb-3">{step.title}</h3>
+              <p class="text-gray-300">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="py-16">
+      <div class="max-w-6xl mx-auto px-8">
+        <h2 class="text-3xl font-bold text-center mb-12">Our Technology Stack</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-gray-800 p-8 rounded-lg">
+            <h3 class="text-2xl font-bold mb-6 text-cyan-400">Frontend</h3>
+            <ul class="space-y-2">
+              <li class="text-gray-300">• React & Next.js</li>
+              <li class="text-gray-300">• Vue.js & Nuxt.js</li>
+              <li class="text-gray-300">• TypeScript</li>
+              <li class="text-gray-300">• Tailwind CSS</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-8 rounded-lg">
+            <h3 class="text-2xl font-bold mb-6 text-cyan-400">Backend</h3>
+            <ul class="space-y-2">
+              <li class="text-gray-300">• Node.js</li>
+              <li class="text-gray-300">• GraphQL & REST APIs</li>
+              <li class="text-gray-300">• PostgreSQL & MongoDB</li>
+              <li class="text-gray-300">• Redis Caching</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-8 rounded-lg">
+            <h3 class="text-2xl font-bold mb-6 text-cyan-400">DevOps</h3>
+            <ul class="space-y-2">
+              <li class="text-gray-300">• Docker & CI/CD</li>
+              <li class="text-gray-300">• AWS & DigitalOcean</li>
+              <li class="text-gray-300">• Vercel & Netlify</li>
+              <li class="text-gray-300">• Monitoring & Analytics</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Detail Section -->
+    <section class="bg-gray-800 py-16">
+      <div class="max-w-6xl mx-auto px-8">
+        <h2 class="text-3xl font-bold text-center mb-12">Our Software Development Services</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-gray-900 p-8 rounded-lg">
+            <h3 class="text-2xl font-bold mb-4 text-cyan-400">Web Applications</h3>
+            <p class="text-gray-300 mb-4">Complex dashboards, admin panels, and business applications built with modern frameworks.</p>
+            <ul class="space-y-2">
+              <li class="text-gray-400">• Custom admin dashboards</li>
+              <li class="text-gray-400">• Business management tools</li>
+              <li class="text-gray-400">• Data visualization platforms</li>
+              <li class="text-gray-400">• Real-time collaboration tools</li>
+            </ul>
+          </div>
+          <div class="bg-gray-900 p-8 rounded-lg">
+            <h3 class="text-2xl font-bold mb-4 text-cyan-400">API Development</h3>
+            <p class="text-gray-300 mb-4">Robust, scalable APIs and microservices for modern applications.</p>
+            <ul class="space-y-2">
+              <li class="text-gray-400">• RESTful API design</li>
+              <li class="text-gray-400">• GraphQL implementations</li>
+              <li class="text-gray-400">• Microservices architecture</li>
+              <li class="text-gray-400">• Third-party integrations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-r from-cyan-600 to-blue-600 py-16">
+      <div class="max-w-4xl mx-auto px-8 text-center">
+        <h2 class="text-3xl font-bold mb-6">Ready to Build Your Custom Solution?</h2>
+        <p class="text-xl mb-8 opacity-90">Let's discuss your project requirements and create software that perfectly fits your needs.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button onclick="window.open('https://calendly.com/issa-zaytoun/erstgesprach-mit-issa-zaytoun-web-e-commerce', '_blank')" class="bg-white hover:bg-gray-100 text-blue-600 font-bold py-4 px-8 rounded-lg text-lg transition-colors">
+            Schedule Free Consultation
+          </button>
+          <span class="flex items-center justify-center bg-white/20 text-white font-semibold py-4 px-6 rounded-lg">
+            Phone: +49 176 81441063
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="text-center text-gray-400 py-8">&copy; {new Date().getFullYear()} {t.footer}</footer>
+  </body>
+</html> 

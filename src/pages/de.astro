@@ -30,6 +30,8 @@ const topics = [
         {t.languageSwitch}
       </a>
     </nav>
+    
+    <!-- Hero Section -->
     <main class="flex-1 flex items-center justify-center relative">
       <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1500&q=80')] bg-cover bg-center opacity-40"></div>
       <div class="relative z-10 max-w-2xl mx-auto p-8 rounded-xl bg-black/70 shadow-lg flex flex-col items-start">
@@ -53,6 +55,116 @@ const topics = [
         <p class="mt-4 text-xs text-gray-300">{t.dsgvoNote}</p>
       </div>
     </main>
+
+    <!-- Services Section -->
+    <section class="bg-gray-800 py-16">
+      <div class="max-w-6xl mx-auto px-8">
+        <h2 class="text-3xl font-bold text-center mb-12">{t.servicesTitle}</h2>
+        
+        <!-- E-Commerce Services -->
+        <div class="mb-16">
+          <h3 class="text-2xl font-bold mb-8 text-cyan-400">{t.ecommerceTitle}</h3>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-gray-900/50 p-6 rounded-lg">
+              <h4 class="text-xl font-semibold mb-4 text-white">{t.services.ecommerce.consulting.title}</h4>
+              <ul class="space-y-2">
+                {t.services.ecommerce.consulting.items.map(item => (
+                  <li class="text-gray-300 text-sm flex items-start">
+                    <span class="text-cyan-400 mr-2 mt-1">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="bg-gray-900/50 p-6 rounded-lg">
+              <h4 class="text-xl font-semibold mb-4 text-white">{t.services.ecommerce.development.title}</h4>
+              <ul class="space-y-2">
+                {t.services.ecommerce.development.items.map(item => (
+                  <li class="text-gray-300 text-sm flex items-start">
+                    <span class="text-cyan-400 mr-2 mt-1">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="bg-gray-900/50 p-6 rounded-lg">
+              <h4 class="text-xl font-semibold mb-4 text-white">{t.services.ecommerce.operation.title}</h4>
+              <ul class="space-y-2">
+                {t.services.ecommerce.operation.items.map(item => (
+                  <li class="text-gray-300 text-sm flex items-start">
+                    <span class="text-cyan-400 mr-2 mt-1">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="bg-gray-900/50 p-6 rounded-lg">
+              <h4 class="text-xl font-semibold mb-4 text-white">{t.services.ecommerce.marketing.title}</h4>
+              <ul class="space-y-2">
+                {t.services.ecommerce.marketing.items.map(item => (
+                  <li class="text-gray-300 text-sm flex items-start">
+                    <span class="text-cyan-400 mr-2 mt-1">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Software Development Services -->
+        <div>
+          <h3 class="text-2xl font-bold mb-8 text-cyan-400">{t.softwareTitle}</h3>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-gray-900/50 p-6 rounded-lg">
+              <h4 class="text-xl font-semibold mb-4 text-white">{t.services.software.individual.title}</h4>
+              <ul class="space-y-2">
+                {t.services.software.individual.items.map(item => (
+                  <li class="text-gray-300 text-sm flex items-start">
+                    <span class="text-cyan-400 mr-2 mt-1">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="bg-gray-900/50 p-6 rounded-lg">
+              <h4 class="text-xl font-semibold mb-4 text-white">{t.services.software.technologies.title}</h4>
+              <ul class="space-y-2">
+                {t.services.software.technologies.items.map(item => (
+                  <li class="text-gray-300 text-sm flex items-start">
+                    <span class="text-cyan-400 mr-2 mt-1">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="bg-gray-900/50 p-6 rounded-lg">
+              <h4 class="text-xl font-semibold mb-4 text-white">{t.services.software.integrations.title}</h4>
+              <ul class="space-y-2">
+                {t.services.software.integrations.items.map(item => (
+                  <li class="text-gray-300 text-sm flex items-start">
+                    <span class="text-cyan-400 mr-2 mt-1">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="bg-gray-900/50 p-6 rounded-lg">
+              <h4 class="text-xl font-semibold mb-4 text-white">{t.services.software.quality.title}</h4>
+              <ul class="space-y-2">
+                {t.services.software.quality.items.map(item => (
+                  <li class="text-gray-300 text-sm flex items-start">
+                    <span class="text-cyan-400 mr-2 mt-1">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer class="text-center text-gray-400 py-4 text-sm">&copy; {new Date().getFullYear()} {t.footer}</footer>
   </body>
 </html> 
