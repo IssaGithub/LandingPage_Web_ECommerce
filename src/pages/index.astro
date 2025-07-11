@@ -12,10 +12,12 @@ if (acceptLanguage.toLowerCase().includes('de') && !acceptLanguage.toLowerCase()
 
 const t = translations[currentLocale];
 const otherLocale = currentLocale === 'en' ? 'de' : 'en';
-const otherLocalePath = currentLocale === 'en' ? '/de' : '/';
+
+// Create proper base path for links
+const baseUrl = import.meta.env.BASE_URL || '/';
+const otherLocalePath = currentLocale === 'en' ? baseUrl + 'de' : baseUrl.replace(/\/$/, '');
 
 // Create proper image path - handle both local and GitHub Pages
-const baseUrl = import.meta.env.BASE_URL || '/';
 const imagePath = baseUrl.endsWith('/') ? baseUrl + '4L9A9035.jpg' : baseUrl + '/4L9A9035.jpg';
 
 const topics = [
@@ -123,7 +125,7 @@ const topics = [
         <div class="mb-16">
           <div class="flex justify-between items-center mb-8">
             <h3 class="text-2xl font-bold text-cyan-400">{t.ecommerceTitle}</h3>
-            <a href={currentLocale === 'en' ? '/ecommerce' : '/de/ecommerce'} class="bg-cyan-400 hover:bg-cyan-500 text-black font-semibold py-2 px-4 rounded transition-colors text-sm">
+            <a href={currentLocale === 'en' ? baseUrl + 'ecommerce' : baseUrl + 'de/ecommerce'} class="bg-cyan-400 hover:bg-cyan-500 text-black font-semibold py-2 px-4 rounded transition-colors text-sm">
               {t.ctaButton}
             </a>
           </div>
@@ -179,7 +181,7 @@ const topics = [
         <div>
           <div class="flex justify-between items-center mb-8">
             <h3 class="text-2xl font-bold text-cyan-400">{t.softwareTitle}</h3>
-            <a href={currentLocale === 'en' ? '/software' : '/de/software'} class="bg-cyan-400 hover:bg-cyan-500 text-black font-semibold py-2 px-4 rounded transition-colors text-sm">
+            <a href={currentLocale === 'en' ? baseUrl + 'software' : baseUrl + 'de/software'} class="bg-cyan-400 hover:bg-cyan-500 text-black font-semibold py-2 px-4 rounded transition-colors text-sm">
               {t.ctaButton}
             </a>
           </div>
