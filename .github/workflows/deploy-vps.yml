@@ -27,7 +27,18 @@ jobs:
       - name: Build Astro site for VPS
         run: |
           echo "Building Astro site for VPS deployment..."
-          npx astro build --config astro.config.vps.mjs
+          echo "Using config: astro.config.vps.mjs"
+          echo "NODE_ENV: $NODE_ENV"
+          echo "SITE_URL: $SITE_URL"
+          
+          # Check if config file exists
+          if [ ! -f "astro.config.vps.mjs" ]; then
+            echo "❌ astro.config.vps.mjs not found!"
+            exit 1
+          fi
+          
+          # Run build with verbose output
+          npx astro build --config astro.config.vps.mjs --verbose
         env:
           NODE_ENV: production
           SITE_URL: ${{ secrets.SITE_URL || 'https://yourdomain.com' }}
@@ -35,11 +46,37 @@ jobs:
       - name: Verify build output
         run: |
           echo "Build completed. Checking dist folder:"
+          
+          if [ ! -d "dist" ]; then
+            echo "❌ dist/ folder not found! Build may have failed."
+            echo "Current directory contents:"
+            ls -la
+            echo "Checking for any build artifacts:"
+            find . -name "*.html" -o -name "dist*" -o -name "build*" 2>/dev/null || echo "No build artifacts found"
+            exit 1
+          fi
+          
+          echo "✅ dist/ folder found. Contents:"
           ls -la dist/
-          echo "Checking for video files:"
-          find dist/ -name "*.mp4" -exec ls -lh {} \; || echo "No video files found"
+          
+          # Check for essential files
+          if [ ! -f "dist/index.html" ]; then
+            echo "⚠️ Warning: index.html not found in dist/"
+          else
+            echo "✅ index.html found"
+          fi
+          
+          if [ ! -f "dist/de/index.html" ]; then
+            echo "⚠️ Warning: de/index.html not found in dist/"
+          else
+            echo "✅ German page found"
+          fi
+          
           echo "Total size:"
           du -sh dist/
+          
+          echo "File structure:"
+          find dist/ -type f | head -20
       
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.3
@@ -50,19 +87,19 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             # Create backup of current deployment
-            if [ -d "/var/www/bowa" ]; then
+            if [ -d "/var/www/zaytoun_ecommerce" ]; then
               echo "Creating backup of current deployment..."
-              sudo cp -r /var/www/bowa /var/www/bowa-backup-$(date +%Y%m%d-%H%M%S)
+              sudo cp -r /var/www/zaytoun_ecommerce /var/www/zaytoun_ecommerce-backup-$(date +%Y%m%d-%H%M%S)
             fi
             
             # Create web directory if it doesn't exist
-            sudo mkdir -p /var/www/bowa
+            sudo mkdir -p /var/www/zaytoun_ecommerce
             
             # Set proper ownership
-            sudo chown -R $USER:$USER /var/www/bowa
+            sudo chown -R $USER:$USER /var/www/zaytoun_ecommerce
             
             # Clean previous deployment
-            rm -rf /var/www/bowa/*
+            rm -rf /var/www/zaytoun_ecommerce/*
             
             echo "Deployment directory prepared"
       
@@ -74,7 +111,7 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT || 22 }}
           source: "dist/*"
-          target: "/var/www/bowa/"
+          target: "/var/www/zaytoun_ecommerce/"
           strip_components: 1
       
       - name: Configure web server and finalize deployment
@@ -86,9 +123,9 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             # Set proper permissions
-            sudo chown -R www-data:www-data /var/www/bowa
-            sudo find /var/www/bowa -type d -exec chmod 755 {} \;
-            sudo find /var/www/bowa -type f -exec chmod 644 {} \;
+            sudo chown -R www-data:www-data /var/www/zaytoun_ecommerce
+            sudo find /var/www/zaytoun_ecommerce -type d -exec chmod 755 {} \;
+            sudo find /var/www/zaytoun_ecommerce -type f -exec chmod 644 {} \;
             
             # Restart web server to ensure all changes are applied
             if systemctl is-active --quiet nginx; then
@@ -100,8 +137,8 @@ jobs:
             fi
             
             echo "Deployment completed successfully!"
-            echo "Website files deployed to /var/www/bowa"
-            ls -la /var/www/bowa
+            echo "Website files deployed to /var/www/zaytoun_ecommerce"
+            ls -la /var/www/zaytoun_ecommerce
       
       - name: Health check
         uses: appleboy/ssh-action@v1.0.3
@@ -112,7 +149,7 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             # Check if index.html exists
-            if [ -f "/var/www/bowa/index.html" ]; then
+            if [ -f "/var/www/zaytoun_ecommerce/index.html" ]; then
               echo "✅ index.html found - deployment successful"
             else
               echo "❌ index.html not found - deployment may have failed"
@@ -121,15 +158,15 @@ jobs:
             
             # Check disk usage
             echo "Disk usage of deployment directory:"
-            du -sh /var/www/bowa
+            du -sh /var/www/zaytoun_ecommerce
             
             # Check video files specifically
             echo "Checking for video files:"
-            find /var/www/bowa -name "*.mp4" -exec ls -lh {} \; || echo "No video files found in deployment"
+            find /var/www/zaytoun_ecommerce -name "*.mp4" -exec ls -lh {} \; || echo "No video files found in deployment"
             
             # List recent backups (keep last 5)
             echo "Available backups:"
-            ls -lat /var/www/bowa-backup-* 2>/dev/null | head -5 || echo "No backups found"
+            ls -lat /var/www/zaytoun_ecommerce-backup-* 2>/dev/null | head -5 || echo "No backups found"
             
             # Clean old backups (keep last 5)
-            ls -t /var/www/bowa-backup-* 2>/dev/null | tail -n +6 | xargs -r sudo rm -rf 
+            ls -t /var/www/zaytoun_ecommerce-backup-* 2>/dev/null | tail -n +6 | xargs -r sudo rm -rf 

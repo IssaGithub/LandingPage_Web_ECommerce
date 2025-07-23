@@ -1,7 +1,7 @@
 # Issa Zaytoun – Web & E-Commerce Landing Page
 
 A simple, DSGVO-compliant landing page built with Astro.js and Tailwind CSS.
-
+## WEbsite Folder --> zaytoun_ecommerce
 ## Features
 - Hero section with company info
 - Topic dropdown (Website, Online-shop, Individual programming, App)
