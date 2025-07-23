@@ -37,8 +37,36 @@ jobs:
             exit 1
           fi
           
-          # Run build with verbose output
-          npx astro build --config astro.config.vps.mjs --verbose
+          echo "✅ Config file found. Contents:"
+          cat astro.config.vps.mjs
+          
+          # Check key source files
+          echo "Checking source files..."
+          ls -la src/
+          ls -la src/pages/
+          
+          # Try a simple build test first
+          echo "Testing basic Astro functionality..."
+          npx astro --version
+          
+          echo "Checking if we can build with default config..."
+          if npx astro build --dry-run 2>/dev/null; then
+            echo "✅ Default config works"
+          else
+            echo "⚠️ Default config has issues, proceeding with VPS config"
+          fi
+          
+          # Run build with verbose output and error handling
+          echo "Starting Astro build..."
+          if ! npx astro build --config astro.config.vps.mjs --verbose; then
+            echo "❌ Astro build failed!"
+            echo "Checking for any error logs..."
+            ls -la
+            echo "Trying to run build with more debugging info..."
+            npx astro build --config astro.config.vps.mjs --verbose --debug || true
+            exit 1
+          fi
+          echo "✅ Astro build completed successfully"
         env:
           NODE_ENV: production
           SITE_URL: ${{ secrets.SITE_URL || 'https://yourdomain.com' }}
