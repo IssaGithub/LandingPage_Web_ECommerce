@@ -70,6 +70,8 @@ jobs:
         env:
           NODE_ENV: production
           SITE_URL: ${{ secrets.SITE_URL || 'https://yourdomain.com' }}
+          # Force VPS build mode
+          ASTRO_CONFIG: vps
       
       - name: Verify build output
         run: |
