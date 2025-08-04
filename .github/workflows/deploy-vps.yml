@@ -155,6 +155,18 @@ jobs:
             sudo find /var/www/zaytoun_ecommerce -type d -exec chmod 755 {} \;
             sudo find /var/www/zaytoun_ecommerce -type f -exec chmod 644 {} \;
             
+            # Verify _astro directory exists and has correct permissions
+            if [ -d "/var/www/zaytoun_ecommerce/_astro" ]; then
+              echo "✅ _astro directory found with contents:"
+              ls -la /var/www/zaytoun_ecommerce/_astro/
+              sudo chmod 755 /var/www/zaytoun_ecommerce/_astro
+              sudo chmod 644 /var/www/zaytoun_ecommerce/_astro/*
+            else
+              echo "❌ _astro directory not found!"
+              echo "Available directories:"
+              ls -la /var/www/zaytoun_ecommerce/
+            fi
+            
             # Restart web server to ensure all changes are applied
             if systemctl is-active --quiet nginx; then
               echo "Restarting Nginx..."
