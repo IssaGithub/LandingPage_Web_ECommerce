@@ -1,5 +1,6 @@
 ---
 import { translations } from '../i18n/translations.js';
+import '../styles/global.css';
 
 // Force German locale for this page
 const currentLocale = 'de';
@@ -26,7 +27,7 @@ const topics = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{t.title}</title>
     <meta name="description" content={t.description} />
-    <link rel="stylesheet" href="/src/styles/global.css" />
+
     <link rel="alternate" hreflang="en" href={Astro.site} />
     <link rel="alternate" hreflang="de" href={Astro.site + 'de'} />
   </head>
