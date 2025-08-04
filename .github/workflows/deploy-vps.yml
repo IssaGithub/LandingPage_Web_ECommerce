@@ -58,6 +58,11 @@ jobs:
           
           # Run build with verbose output and error handling
           echo "Starting Astro build..."
+          echo "Current astro.config.vps.mjs contents:"
+          cat astro.config.vps.mjs
+          
+          # Explicitly set environment to prevent base path override
+          export NODE_ENV=vps-production
           if ! npx astro build --config astro.config.vps.mjs --verbose; then
             echo "❌ Astro build failed!"
             echo "Checking for any error logs..."
@@ -68,10 +73,10 @@ jobs:
           fi
           echo "✅ Astro build completed successfully"
         env:
-          NODE_ENV: production
-          SITE_URL: ${{ secrets.SITE_URL || 'https://yourdomain.com' }}
-          # Force VPS build mode
-          ASTRO_CONFIG: vps
+          NODE_ENV: vps-production
+          SITE_URL: ${{ secrets.SITE_URL || 'https://digital-commerce-zaytoun.de' }}
+          # Force VPS build mode - no base path
+          BASE_URL: ""
       
       - name: Verify build output
         run: |
