@@ -152,6 +152,18 @@ const subpage = t.subpages.software;
       </div>
     </section>
 
-    <footer class="text-center text-gray-400 py-8">&copy; {new Date().getFullYear()} {t.footer}</footer>
+    <footer class="bg-gray-800 py-8 mt-16">
+      <div class="max-w-6xl mx-auto px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="text-gray-400 text-sm mb-4 md:mb-0">
+            &copy; {new Date().getFullYear()} {t.footer}
+          </div>
+          <div class="flex space-x-6 text-sm">
+            <a href="/de/impressum" class="text-gray-400 hover:text-white transition-colors">Impressum</a>
+            <a href="/de/datenschutz" class="text-gray-400 hover:text-white transition-colors">Datenschutz</a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html> 

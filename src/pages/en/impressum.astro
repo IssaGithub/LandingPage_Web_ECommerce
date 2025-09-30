@@ -1,0 +1,127 @@
+---
+import { translations } from '../../i18n/translations.js';
+import '../../styles/global.css';
+
+const t = translations.en;
+const baseUrl = import.meta.env.BASE_URL || '/';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Legal Notice - {t.company}</title>
+    <meta name="description" content="Legal notice and company information of Issa Zaytoun - Web & E-Commerce Solutions" />
+    
+    <link rel="alternate" hreflang="en" href={baseUrl + 'en/impressum'} />
+    <link rel="alternate" hreflang="de" href={baseUrl + 'de/impressum'} />
+  </head>
+  <body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 py-4">
+      <div class="max-w-6xl mx-auto px-8 flex justify-between items-center">
+        <a href={baseUrl} class="text-xl font-bold text-cyan-400">
+          {t.company}
+        </a>
+        <div class="flex space-x-4">
+          <a href={baseUrl} class="text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href={baseUrl + 'de/impressum'} class="text-gray-300 hover:text-white transition-colors">Deutsch</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-8 py-12">
+      <h1 class="text-4xl font-bold mb-8 text-cyan-400">Legal Notice</h1>
+      
+      <div class="prose prose-invert max-w-none">
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4 text-white">Information according to § 5 TMG</h2>
+          <div class="bg-gray-800 p-6 rounded-lg">
+            <p class="mb-2"><strong>Issa Zaytoun</strong></p>
+            <p class="mb-2">Web & E-Commerce Solutions</p>
+            <p class="mb-2">Email: issa.zaytoun@gmail.com</p>
+            <p class="mb-2">Phone: +49 176 81441063</p>
+          </div>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4 text-white">Tax Number</h2>
+          <div class="bg-gray-800 p-6 rounded-lg">
+            <p>Tax Number:</p>
+            <p><strong>92604415389</strong></p>
+          </div>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4 text-white">Responsible for content according to § 55 Abs. 2 RStV</h2>
+          <div class="bg-gray-800 p-6 rounded-lg">
+            <p><strong>Issa Zaytoun</strong></p>
+            <p>Address as above</p>
+          </div>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4 text-white">Disclaimer</h2>
+          
+          <h3 class="text-xl font-semibold mb-3 text-cyan-400">Liability for Content</h3>
+          <p class="mb-4 text-gray-300">
+            As service providers, we are liable for own contents of these websites according to Sec. 7, paragraph 1 German Telemedia Act (TMG). However, according to Sec. 8 to 10 German Telemedia Act (TMG), service providers are not under obligation to permanently monitor submitted or stored information or to search for evidences that indicate illegal activities.
+          </p>
+          <p class="mb-6 text-gray-300">
+            Legal obligations to removing information or to blocking the use of information remain unchallenged. In this case, liability is only possible at the time of knowledge about a specific violation of law. Illegal contents will be removed immediately at the time we get knowledge of them.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-3 text-cyan-400">Liability for Links</h3>
+          <p class="mb-4 text-gray-300">
+            Our offer contains links to external third party websites. We have no influence on the contents of those websites, therefore we cannot guarantee for those contents. Providers or administrators of linked websites are always responsible for their own contents. The linked websites had been checked for possible violations of law at the time of the establishment of the link. Illegal contents were not detected at the time of the linking.
+          </p>
+          <p class="mb-6 text-gray-300">
+            However, a permanent monitoring of the contents of linked websites cannot be imposed without reasonable indications that there has been a violation of law. Illegal links will be removed immediately at the time we get knowledge of them.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-3 text-cyan-400">Copyright</h3>
+          <p class="mb-4 text-gray-300">
+            Contents and compilations published on these websites by the providers are subject to German copyright laws. Reproduction, editing, distribution as well as the use of any kind outside the scope of the copyright law require a written permission of the author or originator. Downloads and copies of these websites are permitted for private use only.
+          </p>
+          <p class="mb-6 text-gray-300">
+            The commercial use of our contents without permission of the original author is prohibited. Copyright laws of third parties are respected as long as the contents on these websites do not originate from the provider. Contributions of third parties on this site are indicated as such. However, if you notice any violations of copyright law, please inform us. Such contents will be removed immediately.
+          </p>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4 text-white">Dispute Resolution</h2>
+          <div class="bg-gray-800 p-6 rounded-lg">
+            <p class="mb-4 text-gray-300">
+              The European Commission provides a platform for online dispute resolution (ODR): 
+              <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300">
+                https://ec.europa.eu/consumers/odr/
+              </a>
+            </p>
+            <p class="text-gray-300">
+              You can find our email address in the legal notice above.
+            </p>
+            <p class="mt-4 text-gray-300">
+              We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8 mt-16">
+      <div class="max-w-6xl mx-auto px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="text-gray-400 text-sm mb-4 md:mb-0">
+            &copy; {new Date().getFullYear()} {t.footer}
+          </div>
+          <div class="flex space-x-6 text-sm">
+            <a href={baseUrl + 'en/impressum'} class="text-gray-400 hover:text-white transition-colors">Legal Notice</a>
+            <a href={baseUrl + 'en/privacy'} class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
