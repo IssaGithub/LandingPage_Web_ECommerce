@@ -2,21 +2,14 @@
 import { translations } from '../i18n/translations.js';
 import '../styles/global.css';
 
-// Auto-detect language - default to German
-let currentLocale = 'de'; // Default to German
-const acceptLanguage = Astro.request.headers.get('accept-language') || '';
-
-// If browser language explicitly prefers English, show English
-if (acceptLanguage.toLowerCase().startsWith('en') && !acceptLanguage.toLowerCase().includes('de')) {
-  currentLocale = 'en';
-}
-
+// Force English locale for this page
+const currentLocale = 'en';
 const t = translations[currentLocale];
-const otherLocale = currentLocale === 'en' ? 'de' : 'en';
+const otherLocale = 'de';
 
 // Create proper base path for links
 const baseUrl = import.meta.env.BASE_URL || '/';
-const otherLocalePath = currentLocale === 'de' ? (baseUrl.endsWith('/') ? baseUrl + 'en' : baseUrl + '/en') : baseUrl.replace(/\/$/, '');
+const otherLocalePath = baseUrl === '/' ? '/' : baseUrl.replace(/\/$/, '');
 
 // Create proper image path - handle both local and GitHub Pages
 const imagePath = baseUrl.endsWith('/') ? baseUrl + '4L9A9035.jpg' : baseUrl + '/4L9A9035.jpg';
@@ -35,8 +28,8 @@ const topics = [
     <title>{t.title}</title>
     <meta name="description" content={t.description} />
 
-    <link rel="alternate" hreflang="en" href={Astro.site} />
-    <link rel="alternate" hreflang="de" href={Astro.site + 'de'} />
+    <link rel="alternate" hreflang="en" href={Astro.site + 'en'} />
+    <link rel="alternate" hreflang="de" href={Astro.site} />
   </head>
   <body class="bg-gray-900 text-white min-h-screen flex flex-col">
     <nav class="absolute top-4 right-4 z-20">
@@ -126,7 +119,7 @@ const topics = [
         <div class="mb-16">
           <div class="flex justify-between items-center mb-8">
             <h3 class="text-2xl font-bold text-cyan-400">{t.ecommerceTitle}</h3>
-            <a href={currentLocale === 'en' ? baseUrl + 'ecommerce' : baseUrl + 'de/ecommerce'} class="bg-cyan-400 hover:bg-cyan-500 text-black font-semibold py-2 px-4 rounded transition-colors text-sm">
+            <a href={baseUrl + 'ecommerce'} class="bg-cyan-400 hover:bg-cyan-500 text-black font-semibold py-2 px-4 rounded transition-colors text-sm">
               {t.ctaButton}
             </a>
           </div>
@@ -182,7 +175,7 @@ const topics = [
         <div>
           <div class="flex justify-between items-center mb-8">
             <h3 class="text-2xl font-bold text-cyan-400">{t.softwareTitle}</h3>
-            <a href={currentLocale === 'en' ? baseUrl + 'software' : baseUrl + 'de/software'} class="bg-cyan-400 hover:bg-cyan-500 text-black font-semibold py-2 px-4 rounded transition-colors text-sm">
+            <a href={baseUrl + 'software'} class="bg-cyan-400 hover:bg-cyan-500 text-black font-semibold py-2 px-4 rounded transition-colors text-sm">
               {t.ctaButton}
             </a>
           </div>
@@ -254,11 +247,12 @@ const topics = [
             &copy; {new Date().getFullYear()} {t.footer}
           </div>
           <div class="flex space-x-6 text-sm">
-            <a href={currentLocale === 'en' ? baseUrl + 'en/impressum' : baseUrl + 'de/impressum'} class="text-gray-400 hover:text-white transition-colors">Impressum</a>
-            <a href={currentLocale === 'en' ? baseUrl + 'en/privacy' : baseUrl + 'de/datenschutz'} class="text-gray-400 hover:text-white transition-colors">Datenschutz</a>
+            <a href={baseUrl + 'en/impressum'} class="text-gray-400 hover:text-white transition-colors">Impressum</a>
+            <a href={baseUrl + 'en/privacy'} class="text-gray-400 hover:text-white transition-colors">Datenschutz</a>
           </div>
         </div>
       </div>
     </footer>
   </body>
-</html> 
+</html>
+

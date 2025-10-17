@@ -3,13 +3,16 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   integrations: [tailwind()],
-  site: 'https://issagithub.github.io',
-  base: process.env.NODE_ENV === 'production' ? '/LandingPage_Web_ECommerce' : undefined,
+  site: "https://issagithub.github.io",
+  base:
+    process.env.NODE_ENV === "production"
+      ? "/LandingPage_Web_ECommerce"
+      : undefined,
   i18n: {
-    defaultLocale: "en",
+    defaultLocale: "de",
     locales: ["en", "de"],
     routing: {
-      prefixDefaultLocale: false
-    }
-  }
-}); 
+      prefixDefaultLocale: false,
+    },
+  },
+});
